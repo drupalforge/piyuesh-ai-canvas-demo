@@ -76,8 +76,8 @@ echo
 #   drush -n cset --input-format=yaml package_manager.settings additional_known_files_in_project_root '["patches.json", "patches.lock.json"]'
 #   time drush ev '\Drupal::moduleHandler()->invoke("automatic_updates", "modules_installed", [[], FALSE])'
 # else
-  echo 'Update database.'
-  time drush -n updb
+  # echo 'Update database.'
+  # time drush -n updb
 # fi
 
 #== Warm up caches.
