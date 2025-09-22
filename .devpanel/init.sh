@@ -28,18 +28,18 @@ echo Remove root-owned files.
 time sudo rm -rf lost+found
 
 #== Composer install.
-echo
-if [ -f composer.json ]; then
-  if composer show --locked cweagans/composer-patches ^2 &> /dev/null; then
-    echo 'Update patches.lock.json.'
-    time composer prl
-    echo
-  fi
-else
-  echo 'Generate composer.json.'
-  time source .devpanel/composer_setup.sh
-  echo
-fi
+# echo
+# if [ -f composer.json ]; then
+#   if composer show --locked cweagans/composer-patches ^2 &> /dev/null; then
+#     echo 'Update patches.lock.json.'
+#     time composer prl
+#     echo
+#   fi
+# else
+#   echo 'Generate composer.json.'
+#   time source .devpanel/composer_setup.sh
+#   echo
+# fi
 # If update fails, change it to install.
 time composer -n update --no-dev --no-progress
 
