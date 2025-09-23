@@ -98,35 +98,35 @@ fi
 #fi
 
 #== Install Drupal.
-echo
-NEWINSTALL=0
-if [ -z "$(mysql -h $DB_HOST -P $DB_PORT -u $DB_USER -p$DB_PASSWORD $DB_NAME -e 'show tables')" ]; then
-  time drush -n si
+# echo
+# NEWINSTALL=0
+# if [ -z "$(mysql -h $DB_HOST -P $DB_PORT -u $DB_USER -p$DB_PASSWORD $DB_NAME -e 'show tables')" ]; then
+#   time drush -n si
 
-  # echo
-  # echo 'Tell Automatic Updates about patches.'
-  # drush pm:en package_manager -y
-  # time drush -n cset --input-format=yaml package_manager.settings additional_known_files_in_project_root '["patches.json", "patches.lock.json"]'
-  NEWINSTALL=1
-else
-  drush -n updb
-fi
-
-source .devpanel/setup-ai.sh
-#== Apply the recipe logic if its a new install.
-# if [ $NEWINSTALL -eq 1 ]; then
-#   source .devpanel/recipe_logic.sh
+#   # echo
+#   # echo 'Tell Automatic Updates about patches.'
+#   # drush pm:en package_manager -y
+#   # time drush -n cset --input-format=yaml package_manager.settings additional_known_files_in_project_root '["patches.json", "patches.lock.json"]'
+#   NEWINSTALL=1
+# else
+#   drush -n updb
 # fi
 
-#== Warm up caches.
-echo
-echo 'Run cron.'
-time drush cron
-echo
-echo 'Populate caches.'
-if ! time drush cache:warm 2> /dev/null; then
-  time .devpanel/warm > /dev/null
-fi
+# source .devpanel/setup-ai.sh
+# #== Apply the recipe logic if its a new install.
+# # if [ $NEWINSTALL -eq 1 ]; then
+# #   source .devpanel/recipe_logic.sh
+# # fi
+
+# #== Warm up caches.
+# echo
+# echo 'Run cron.'
+# time drush cron
+# echo
+# echo 'Populate caches.'
+# if ! time drush cache:warm 2> /dev/null; then
+#   time .devpanel/warm > /dev/null
+# fi
 
 #== Finish measuring script time.
 INIT_DURATION=$SECONDS
