@@ -101,7 +101,7 @@ fi
 echo
 NEWINSTALL=0
 if [ -z "$(mysql -h $DB_HOST -P $DB_PORT -u $DB_USER -p$DB_PASSWORD $DB_NAME -e 'show tables')" ]; then
-  time drush -n si
+  time drush -n si standard
 
   # echo
   # echo 'Tell Automatic Updates about patches.'
