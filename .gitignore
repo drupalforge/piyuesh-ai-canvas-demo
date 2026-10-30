@@ -3,9 +3,11 @@
 /.gitattributes
 /.vscode/
 /config/
+/LICENSE*
 /logs/*
 /patches.lock.json
 /private/
+/README*
 /recipes/
 /vendor/
 /web/
